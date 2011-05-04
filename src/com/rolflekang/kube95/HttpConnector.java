@@ -3,10 +3,8 @@ package com.rolflekang.kube95;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import org.apache.http.HttpResponse;
@@ -17,7 +15,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 public class HttpConnector {
 
-	public static final int PANT = 0;
+	public final int PANT = 0;
 
 	private String url;
 	public HttpConnector(String ip){

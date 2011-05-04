@@ -35,6 +35,7 @@ public class PantListActivity extends ListActivity {
 			}
 		});
 	}
+	@SuppressWarnings("unused")
 	private void createTestList() {
 		for (int i = 0; i < 5; i++) { pantList.add(new Pant(new Date(), 200, "Rofl"));}
 		pAdapter.notifyDataSetChanged();

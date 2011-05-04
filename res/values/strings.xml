@@ -3,7 +3,7 @@
     <string name="app_name">Kube95</string>
     <string name="no_pantentries">Det er ikke lagt inn noen pant.</string>
     
-    
+    <string name="savebtn">Lagre</string>
     
     <!-- Design -->
     <string name="list_textcolor">#020202</string>
