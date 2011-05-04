@@ -24,7 +24,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		switch(v.getId()){
 		case R.id.menupantbtn:
 			Intent i = new Intent(this, PantListActivity.class);
-			  startActivityForResult(i, 0);
+			startActivityForResult(i, 0);
 			break;
 		}
 	}

@@ -11,14 +11,14 @@ import android.widget.AdapterView.OnItemClickListener;
 public class PantListActivity extends ListActivity {
 	   public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        setListAdapter(new ArrayAdapter<String>(this, 0, new String[]{".","..","..."}));
+	        setListAdapter(new ArrayAdapter<String>(this, R.layout.pantlistrow, new String[]{".","..","..."}));
 	        ListView list = getListView();
-	        registerForContextMenu(list);
+//	        registerForContextMenu(list);
 	        list.setOnItemClickListener(new OnItemClickListener() {
 				public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
 					
 				}
 			});
-	        registerForContextMenu(list);        
 	    }
+	   
 }
