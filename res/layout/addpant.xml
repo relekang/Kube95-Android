@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="20dp">
+    <EditText android:id="@+id/amountfield"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:hint="100"
+    	android:singleLine="true"
+    	android:numeric="decimal"/>
+    <DatePicker android:id="@+id/datepicker"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@id/amountfield"/>
+    <EditText android:id="@+id/userfield"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@id/datepicker"
+    	android:hint="navn"
+    	android:singleLine="true"/>
+    	
+    <Button android:id="@+id/savebtn"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@id/userfield"
+    	android:text="@string/savebtn"
+    	android:background="@drawable/custombtn"/>
+</RelativeLayout>
