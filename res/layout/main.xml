@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <Button android:text="Button" android:id="@+id/menupantbtn" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
-</LinearLayout>
+    android:layout_height="fill_parent">
+    <ImageView android:id="@+id/mainimg"
+    	android:layout_alignParentLeft="true"
+    	android:layout_alignParentTop="true"
+    	android:layout_height="250dp"
+    	android:layout_width="100dp"/>
+    <Button android:id="@+id/menupantbtn"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_toRightOf="@id/mainimg"
+    	android:padding="20dp"
+    	android:text="Pantekassa"
+    	android:background="@drawable/custombtn"/>
+</RelativeLayout>
