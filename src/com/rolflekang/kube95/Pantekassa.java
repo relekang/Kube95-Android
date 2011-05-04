@@ -18,7 +18,7 @@ public class Pantekassa extends ArrayList<Pant>{
 			String[] bits = s.split("\\|");
 			String[] d = bits[0].split("-");
 			Calendar cal = Calendar.getInstance();
-			//cal.set(Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.getInteger(d[2]));
+			cal.set(Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.parseInt(d[2]));
 			this.add(new Pant(cal.getTime(), Double.parseDouble(bits[1]), bits[2]));	
 		}
 	}

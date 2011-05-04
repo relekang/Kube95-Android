@@ -1,6 +1,7 @@
 package com.rolflekang.kube95;
 
-import java.util.ArrayList;
+import java.util.Calendar;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 public class PantAdapter extends ArrayAdapter<Pant> {
+	@SuppressWarnings("unused")
 	private Context context;
 	private LayoutInflater mInflater;
 	private Pantekassa pantList;
@@ -39,12 +41,13 @@ public class PantAdapter extends ArrayAdapter<Pant> {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.date.setVisibility(8);
+//		holder.date.setVisibility(8);
 		// Fill in the actual story info
 		Pant p = pantList.get(position);
 
 		holder.amount.setText(p.getAmount() + "kr");
-		holder.date.setText(p.getDate().toString());
+		//TODO: Use Calendar since getMonth... is deprecated
+		holder.date.setText(p.getDate().getDate() + "." + (p.getDate().getMonth()+1) + "." + (p.getDate().getYear()+1900));
 		holder.user.setText(p.getUser());
 		
 		
