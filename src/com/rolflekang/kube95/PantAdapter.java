@@ -11,13 +11,14 @@ import android.widget.TextView;
 public class PantAdapter extends ArrayAdapter<Pant> {
 	private Context context;
 	private LayoutInflater mInflater;
-	private ArrayList<Pant> pantList;
+	private Pantekassa pantList;
 
-	public PantAdapter(Context context, int textViewResourceId, ArrayList<Pant> pantList) {
+	public PantAdapter(Context context, int textViewResourceId, Pantekassa pantList) {
 		super(context, textViewResourceId, pantList);
 		this.pantList = pantList;
 		this.context = context;
 		this.mInflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
 	}
 	@Override
 	public int getCount() {
@@ -38,13 +39,16 @@ public class PantAdapter extends ArrayAdapter<Pant> {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-
+		holder.date.setVisibility(8);
 		// Fill in the actual story info
 		Pant p = pantList.get(position);
 
-		holder.amount.setText(p.getValue() + "kr");
+		holder.amount.setText(p.getAmount() + "kr");
 		holder.date.setText(p.getDate().toString());
 		holder.user.setText(p.getUser());
+		
+		
+		
 		return convertView;
 	}
 

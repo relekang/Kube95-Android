@@ -5,12 +5,12 @@ import java.util.Date;
 public class Pant {
 	private Date date;
 	private String user;
-	private double value;
+	private double amount;
 	
-	public Pant(Date date, int value, String user){
+	public Pant(Date date, double amount, String user){
 		this.date = date;
 		this.user = user;
-		this.value = value;
+		this.amount = amount;
 	}
 
 	public void setDate(Date date) {
@@ -25,10 +25,10 @@ public class Pant {
 
 	public String getUser() { return user; }
 
-	public void setValue(double value) {
-		this.value = value;
+	public void setAmount(double value) {
+		this.amount = value;
 	}
 
-	public double getValue() { return value; }
+	public double getAmount() { return amount; }
 	
 }
