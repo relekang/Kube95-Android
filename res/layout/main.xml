@@ -8,12 +8,15 @@
     <ImageView android:id="@+id/mainimg"
     	android:layout_alignParentLeft="true"
     	android:layout_alignParentTop="true"
-    	android:layout_height="250dp"
-    	android:layout_width="100dp"/>
+    	android:layout_height="320dp"
+    	android:layout_width="wrap_content"
+    	android:src="@drawable/kube95bg"/>
     <Button android:id="@+id/menupantbtn"
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
-    	android:layout_toRightOf="@id/mainimg"
+    	android:layout_alignParentRight="true"
+    	android:layout_marginRight="40dp"
+    	android:layout_marginTop="40dp"
     	android:padding="10dp"
     	android:text="Pantekassa"
     	android:textColor="#f5f5f5"
@@ -27,13 +30,13 @@
 	    <TextView android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content" 
 	    	android:textSize="14dp"
-	    	android:textColor="#000000"
+	    	android:textColor="@color/black"
 	    	android:text="Vaskeansvar denne uken: "/>
 	    <TextView android:id="@+id/cleanertextview"
 	    	android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content"
 	    	android:textSize="14dp"
-	    	android:textColor="#000000"/>
+	    	android:textColor="@color/black"/>
     </LinearLayout>
     
     <LinearLayout android:id="@+id/nextcleaner"
@@ -44,12 +47,12 @@
 	    <TextView android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content"
 	    	android:textSize="14dp"
-	    	android:textColor="#000000"
+	    	android:textColor="@color/black"
 	    	android:text="Vaskeansvar neste uke: "/>
 	    <TextView android:id="@+id/nextcleanertextview"
 	    	android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content"
 	    	android:textSize="14dp"
-	    	android:textColor="#000000"/>
+	    	android:textColor="@color/black"/>
     </LinearLayout>
 </RelativeLayout>
