@@ -34,8 +34,8 @@
 	        	android:text="Vaskeuke: " 
 	        	android:layout_width="wrap_content"
 				android:textColor="#000000"/>
-	        <TextView android:text="TextView" 
-	        	android:id="@+id/textView4" 
+	        <TextView
+	        	android:id="@+id/widgetcurrentcleaner" 
 	        	android:layout_width="wrap_content" 
 	        	android:layout_height="wrap_content"
 				android:textColor="#000000"/>
@@ -48,8 +48,8 @@
 	        	android:text="Neste: " 
 	        	android:layout_width="wrap_content"
 				android:textColor="#000000"/>
-	        <TextView android:text="TextView" 
-	        	android:id="@+id/textView3" 
+	        <TextView  
+	        	android:id="@+id/widgetnextcleaner" 
 	        	android:layout_width="wrap_content" 
 	        	android:layout_height="wrap_content"	        	
 				android:textColor="#000000"/>
