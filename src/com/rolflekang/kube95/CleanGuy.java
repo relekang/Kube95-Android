@@ -18,7 +18,7 @@ public class CleanGuy {
 		else if(weeknr == 13 || (weeknr - 13) % 8 == 0)  return "Anders";
 		else if(weeknr == 14 || (weeknr - 14) % 8 == 0)  return "Andreas";
 		else if(weeknr == 15 || (weeknr - 15) % 8 == 0)  return "Ole";
-		else if(weeknr == 16 || (weeknr - 16) % 8 == 0)  return "HŒvard";
+		else if(weeknr == 16 || (weeknr - 16) % 8 == 0)  return "Håvard";
 		return "Random";
 	}
 	public int getNextCleanWeek(String name){

@@ -13,7 +13,7 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/sumtext"
-		android:background="#F5F5F5"></ListView>
+	    android:cacheColorHint="#00000000"></ListView>
 	<TextView android:id="@android:id/empty"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
