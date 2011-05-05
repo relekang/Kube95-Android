@@ -7,11 +7,7 @@ import java.util.Calendar;
 @SuppressWarnings("serial")
 public class Pantekassa extends ArrayList<Pant>{
 	
-	
-	
-	public Pantekassa() {
-		
-	}
+	public Pantekassa() {  }
 	
 	public void parseStrings(String[] list) {
 		for (String s : list) {

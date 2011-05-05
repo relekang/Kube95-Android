@@ -1,7 +1,5 @@
 package com.rolflekang.kube95;
 
-import java.util.Calendar;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
