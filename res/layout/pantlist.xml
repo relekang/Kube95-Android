@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent" android:background="#F5F5F5">
+	android:layout_height="fill_parent" android:background="@color/white">
 	<TextView android:id="@+id/sumtext"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:padding="2dp"
-		android:textColor="#000000"
+		android:textColor="@color/black"
 		android:background="@drawable/sumbackground"
 		android:textSize="14dp"/>
 	<ListView android:id="@android:id/list"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/sumtext"
-	    android:cacheColorHint="#00000000"></ListView>
+	    android:cacheColorHint="@color/black"></ListView>
 	<TextView android:id="@android:id/empty"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="@string/no_pantentries"
-		android:textColor="#000000" />
+		android:textColor="@color/black" />
 </RelativeLayout>

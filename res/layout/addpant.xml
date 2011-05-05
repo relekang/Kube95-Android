@@ -25,7 +25,9 @@
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	android:layout_below="@id/userfield"
+    	android:layout_centerHorizontal="true"
     	android:text="@string/savebtn"
     	android:padding="10dp"
-    	android:background="@drawable/custombtn"/>
+    	android:background="@drawable/custombtn"
+    	android:textColor="@color/white"/>
 </RelativeLayout>
