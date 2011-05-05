@@ -6,8 +6,10 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -26,6 +28,16 @@ public class HttpConnector {
 		case PANT: return getPant();
 		default: return null;
 		}
+	}
+	public boolean sendPant(Date date, double amount, String user){
+		HttpClient client = new DefaultHttpClient();
+		HttpGet request = new HttpGet();
+		try {
+			request.setURI(new URI(url+"pantekassa/a.php?key=0&date="+date.getYear()+"-"+date.getMonth()+"-"+date.getDate()+"&amount="+amount+"&user="+user));
+			HttpResponse response = client.execute(request);
+			response.getEntity().getContent();
+		} catch (URISyntaxException e) { return false; } catch (ClientProtocolException e) { return false; } catch (IOException e) { return false; }
+		return true;
 	}
 	private String[] getPant() {
 
