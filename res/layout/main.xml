@@ -28,7 +28,7 @@
 	    	android:layout_height="wrap_content" 
 	    	android:textSize="14dp"
 	    	android:textColor="#000000"
-	    	android:text="Vaskeansvar denne uken:"/>
+	    	android:text="Vaskeansvar denne uken: "/>
 	    <TextView android:id="@+id/cleanertextview"
 	    	android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
 	    	android:layout_height="wrap_content"
 	    	android:textSize="14dp"
 	    	android:textColor="#000000"
-	    	android:text="Vaskeansvar neste uke:"/>
+	    	android:text="Vaskeansvar neste uke: "/>
 	    <TextView android:id="@+id/nextcleanertextview"
 	    	android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content"
