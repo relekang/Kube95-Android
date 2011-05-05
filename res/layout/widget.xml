@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:gravity="center"
+	android:background="@drawable/widget_bg"
+	android:paddingTop="22dp"
+	android:paddingLeft="18dp"
+	android:paddingRight="18dp"
+	android:paddingBottom="22dp">
+	<TextView android:id="@+id/widgetpantbtn"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:gravity="center"
+		android:padding="10dp"
+		android:textColor="#000000"
+		android:text="Pantekassa"
+		android:background="@drawable/widget_states"/>
+	<TextView
+		android:layout_width="2dp"
+		android:layout_height="fill_parent"
+		android:background="@drawable/divider_vertical_dark"/>
+	<LinearLayout 
+		android:layout_height="match_parent"
+		android:layout_width="match_parent" 
+		android:orientation="vertical"
+		android:padding="10dp">
+	    <LinearLayout 
+	    	android:layout_height="wrap_content" 
+	    	android:layout_width="match_parent">
+	        <TextView 
+	        	android:layout_height="wrap_content" 
+	        	android:text="Vaskeuke: " 
+	        	android:layout_width="wrap_content"
+				android:textColor="#000000"/>
+	        <TextView android:text="TextView" 
+	        	android:id="@+id/textView4" 
+	        	android:layout_width="wrap_content" 
+	        	android:layout_height="wrap_content"
+				android:textColor="#000000"/>
+	    </LinearLayout>
+	    <LinearLayout 
+	    	android:layout_height="wrap_content" 
+	    	android:layout_width="match_parent">
+	        <TextView 
+	        	android:layout_height="wrap_content" 
+	        	android:text="Neste: " 
+	        	android:layout_width="wrap_content"
+				android:textColor="#000000"/>
+	        <TextView android:text="TextView" 
+	        	android:id="@+id/textView3" 
+	        	android:layout_width="wrap_content" 
+	        	android:layout_height="wrap_content"	        	
+				android:textColor="#000000"/>
+	    </LinearLayout>
+	</LinearLayout>
+</LinearLayout>
