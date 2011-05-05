@@ -4,11 +4,10 @@ import java.util.Calendar;
 
 
 public class CleanGuy {
-	
+		
 	public String getCleaner() {
 		Calendar c = Calendar.getInstance();
-		getCleaner(c.get(Calendar.WEEK_OF_MONTH));
-		return "Random";
+		return getCleaner(c.get(Calendar.WEEK_OF_MONTH));
 	}
 	public String getCleaner(int weeknr) {
 		if (weeknr == 9 || (weeknr - 9) % 8 == 0) return "Katrine";
@@ -20,6 +19,10 @@ public class CleanGuy {
 		else if(weeknr == 15 || (weeknr - 15) % 8 == 0)  return "Ole";
 		else if(weeknr == 16 || (weeknr - 16) % 8 == 0)  return "Håvard";
 		return "Random";
+	}
+	public String getNextCleaner() {
+		Calendar c = Calendar.getInstance();
+		return getCleaner(c.get(Calendar.WEEK_OF_MONTH) + 1);
 	}
 	public int getNextCleanWeek(String name){
 		//TODO: Lage denne funskjonen

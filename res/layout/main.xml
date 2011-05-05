@@ -19,12 +19,37 @@
     	android:textColor="#f5f5f5"
     	android:background="@drawable/custombtn"
     	/>
-    <TextView android:id="@+id/cleanertextview"
-    	android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	android:layout_below="@id/mainimg"
-    	android:padding="20dp"
-    	android:textSize="14dp"
-    	android:textColor="#000000"
-    	android:text="Vaskeuke:"/>
+    <LinearLayout android:id="@+id/currentcleaner"
+    	android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/mainimg">
+	    <TextView android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content" 
+	    	android:textSize="14dp"
+	    	android:textColor="#000000"
+	    	android:text="Vaskeansvar denne uken:"/>
+	    <TextView android:id="@+id/cleanertextview"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:textSize="14dp"
+	    	android:textColor="#000000"/>
+    </LinearLayout>
+    
+    <LinearLayout android:id="@+id/nextcleaner"
+    	android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/currentcleaner">
+	    <TextView android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:textSize="14dp"
+	    	android:textColor="#000000"
+	    	android:text="Vaskeansvar neste uke:"/>
+	    <TextView android:id="@+id/nextcleanertextview"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:textSize="14dp"
+	    	android:textColor="#000000"/>
+    </LinearLayout>
 </RelativeLayout>
