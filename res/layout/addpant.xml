@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="20dp">
+    android:padding="4dp">
     <EditText android:id="@+id/amountfield"
     	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
@@ -11,7 +11,7 @@
     	android:singleLine="true"
     	android:numeric="decimal"/>
     <DatePicker android:id="@+id/datepicker"
-    	android:layout_width="wrap_content"
+    	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
     	android:layout_below="@id/amountfield"/>
     <EditText android:id="@+id/userfield"
@@ -26,5 +26,6 @@
     	android:layout_height="wrap_content"
     	android:layout_below="@id/userfield"
     	android:text="@string/savebtn"
+    	android:padding="10dp"
     	android:background="@drawable/custombtn"/>
 </RelativeLayout>
