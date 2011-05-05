@@ -21,6 +21,30 @@
 		android:layout_width="2dp"
 		android:layout_height="fill_parent"
 		android:background="@drawable/divider_vertical_dark"/>
+	<LinearLayout android:id="@+id/widgetsumholder"
+		android:layout_height="match_parent"
+		android:layout_width="wrap_content" 
+		android:orientation="vertical"
+		android:gravity="center"
+		android:background="@drawable/widget_states">
+		<TextView 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:padding="5dp"
+			android:textColor="#000000"
+			android:text="Pant:"/>
+		<TextView android:id="@+id/widgetpantsum"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="#000000"
+			android:gravity="center"
+			android:text="N/A"/>
+	</LinearLayout>
+	<TextView
+		android:layout_width="2dp"
+		android:layout_height="fill_parent"
+		android:background="@drawable/divider_vertical_dark"/>
 	<LinearLayout 
 		android:layout_height="match_parent"
 		android:layout_width="match_parent" 

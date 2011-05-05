@@ -27,6 +27,7 @@
                 
         <receiver android:name="WidgetProvider" >
 		    <intent-filter>
+		    	<action android:name="com.rolflekang.kube95.buttons.ButtonWidget.ACTION_WIDGET_RECEIVER"/>
 		        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 		    </intent-filter>
 		    <meta-data android:name="android.appwidget.provider"
