@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 public class WidgetProvider extends AppWidgetProvider {
 	
@@ -46,7 +47,12 @@ public class WidgetProvider extends AppWidgetProvider {
         }
     }
     
+    @Override
     public void onReceive(Context context, Intent intent) {
+    	if(intent.getAction().equals(ACTION_WIDGET_RECEIVER)) {
+    		Toast.makeText(context, "Oppdaterte sum pant", Toast.LENGTH_SHORT).show();
+    	}
     	
+    	super.onReceive(context, intent);
     }
 }
