@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-<item android:id="@android:id/background">
+<item android:state_pressed="false">
     <shape>
         <corners android:radius="50dip" />
         <gradient
                 android:startColor="#000000"
                 android:centerColor="#333333"
+                android:centerY="0.45"
+                android:endColor="#555555"
+                android:angle="90"
+        />
+<!--         <stroke android:width="0.5dp" android:color="#444444" /> -->
+    </shape>
+</item>
+
+<item android:state_pressed="true">
+    <shape>
+        <corners android:radius="50dip" />
+        <gradient
+                android:startColor="#ffffff"
+                android:centerColor="#aaaaaa"
                 android:centerY="0.45"
                 android:endColor="#555555"
                 android:angle="90"

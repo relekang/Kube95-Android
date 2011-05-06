@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:padding="4dp"
-    android:background="@color/black60">
+    android:background="@color/white60">
     <EditText android:id="@+id/amountfield"
     	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
