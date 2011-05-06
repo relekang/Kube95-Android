@@ -18,9 +18,6 @@ public class Pantekassa extends ArrayList<Pant>{
 			this.add(new Pant(cal.getTime(), Double.parseDouble(bits[1]), bits[2]));	
 		}
 	}
-	public void update(){
-		parseStrings((String[]) this.toArray(new String[this.size()]));
-	}
 
 	public double getSum() { 
 		int sum = 0;
