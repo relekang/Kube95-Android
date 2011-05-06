@@ -12,12 +12,15 @@ public class Settings {
 		pref = Preferences.userRoot().node("kube95");
 	}
 	public String getUserName() {
-		try {
-			if(pref.nodeExists(NODETITLEUSERNAME)) return pref.get(NODETITLEUSERNAME, "Name");
-			else return null;
-		} catch (BackingStoreException e) { return null; }
+		return pref.get(NODETITLEUSERNAME, "Name");
 	}
 	public void setUserName(String username) {
 		pref.put(NODETITLEUSERNAME, username);
+	}
+	public boolean isUserNameSet(){
+		try {
+			if(pref.nodeExists(NODETITLEUSERNAME)) return true;
+		} catch (BackingStoreException e) { return false; }
+		return false;
 	}
 }
