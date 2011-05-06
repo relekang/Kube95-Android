@@ -16,26 +16,29 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements OnClickListener{
 	private Button menuPantBtn, changeCleanerButton, saveUserNameButton;
-	private TextView cleanerTextView, nextCleanerTextView;
+	private TextView cleanerTextView, nextCleanerTextView, nextCleanWeekTextView;
 	private EditText userNameField;
 	private Settings settings;
 	private Dialog userNameDialog;
+	private CleanGuy cleanGuy;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        settings = new Settings();
+        settings = new Settings(getApplicationContext());
         if(!settings.isUserNameSet()) viewUserNameDialog();
         
         
-        CleanGuy cleaner = new CleanGuy();
+        cleanGuy = new CleanGuy();
         
         cleanerTextView = (TextView) this.findViewById(R.id.cleanertextview);
-        cleanerTextView.setText(cleaner.getCleaner());
+        cleanerTextView.setText(cleanGuy.getCleaner());
         nextCleanerTextView = (TextView) this.findViewById(R.id.nextcleanertextview);
-        nextCleanerTextView.setText(cleaner.getNextCleaner());
+        nextCleanerTextView.setText(cleanGuy.getNextCleaner());
+        nextCleanWeekTextView = (TextView) this.findViewById(R.id.nextcleanweektextview);
+        if(settings.isUserNameSet()) nextCleanWeekTextView.setText(Integer.toString(cleanGuy.getNextCleanWeek(settings.getUserName())));
         
         menuPantBtn = (Button) this.findViewById(R.id.menupantbtn);
         menuPantBtn.setOnClickListener(this);
@@ -67,6 +70,7 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.usernamesavebtn:
 			settings.setUserName(userNameField.getText().toString());
+			nextCleanWeekTextView.setText(cleanGuy.getNextCleanWeek(userNameField.getText().toString()));
 			userNameDialog.dismiss();
 			break;
 //		case R.id.feedbackbtn:

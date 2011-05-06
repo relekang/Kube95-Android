@@ -40,7 +40,7 @@ public class PantListActivity extends ListActivity implements OnClickListener {
 		httpCon = new HttpConnector("10.0.1.3");
 		pantList.parseStrings(httpCon.getList(httpCon.PANT));
 		pAdapter = new PantAdapter(this, R.layout.pantlistrow, pantList);
-		settings = new Settings();
+		settings = new Settings(getApplicationContext());
 		setContentView(R.layout.pantlist);
 		setListAdapter(pAdapter);
 		sumTextField = (TextView) this.findViewById(R.id.sumtext);

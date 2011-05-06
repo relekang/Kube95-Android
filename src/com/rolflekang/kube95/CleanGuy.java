@@ -16,7 +16,11 @@ public class CleanGuy {
 		
 	public String getCleaner() {
 		Calendar c = Calendar.getInstance();
-		return getCleaner(c.get(Calendar.WEEK_OF_MONTH));
+		return getCleaner(c.get(Calendar.WEEK_OF_YEAR));
+	}
+	public String getNextCleaner() {
+		Calendar c = Calendar.getInstance();
+		return getCleaner(c.get(Calendar.WEEK_OF_YEAR) + 1);
 	}
 	public String getCleaner(int weeknr) {
 		if (weeknr == KATRINE || (weeknr - KATRINE) % 8 == 0) return "Katrine";
@@ -29,20 +33,21 @@ public class CleanGuy {
 		else if(weeknr == HAVARD || (weeknr - HAVARD) % 8 == 0)  return "Havard";
 		return "Random";
 	}
-	public String getNextCleaner() {
-		Calendar c = Calendar.getInstance();
-		return getCleaner(c.get(Calendar.WEEK_OF_MONTH) + 1);
-	}
 	public int getNextCleanWeek(String name){
-		//TODO: Only deliveres first week. Has to calculate next..
-		if(name.equalsIgnoreCase("katrine")) return KATRINE;
-		else if(name.equalsIgnoreCase("rolfole")) return ROLFOLE;
-		else if(name.equalsIgnoreCase("julie")) return JULIE;
-		else if(name.equalsIgnoreCase("rolferik")) return ROLFERIK;
-		else if(name.equalsIgnoreCase("anders")) return ANDERS;
-		else if(name.equalsIgnoreCase("andreas")) return ANDREAS;
-		else if(name.equalsIgnoreCase("ole")) return OLE;
-		else if(name.equalsIgnoreCase("havard"))  return HAVARD;
+		Calendar cal = Calendar.getInstance();
+		int week = cal.get(Calendar.WEEK_OF_YEAR);
+		int weekOrigin = 0;
+		if(name.equalsIgnoreCase("katrine")) weekOrigin = KATRINE;
+		else if(name.equalsIgnoreCase("rolfole")) weekOrigin = ROLFOLE;
+		else if(name.equalsIgnoreCase("julie")) weekOrigin = JULIE;
+		else if(name.equalsIgnoreCase("rolferik")) weekOrigin = ROLFERIK;
+		else if(name.equalsIgnoreCase("anders")) weekOrigin = ANDERS;
+		else if(name.equalsIgnoreCase("andreas")) weekOrigin = ANDREAS;
+		else if(name.equalsIgnoreCase("ole")) weekOrigin = OLE;
+		else if(name.equalsIgnoreCase("havard"))  weekOrigin = HAVARD;
+		for (int i = 0; i < 8; i++) {
+			if((week + i) == weekOrigin || ((week + i) - weekOrigin) % 8 == 0) return (week + i);
+		}
 		return 0;
 	}
 	public ArrayList<String> getNextCleanersList(int weeknr) {

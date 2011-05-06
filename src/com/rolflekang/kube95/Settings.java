@@ -1,26 +1,31 @@
 package com.rolflekang.kube95;
 
-import java.util.prefs.BackingStoreException;
-import java.util.prefs.Preferences;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 
 public class Settings {
 	private final String NODETITLEUSERNAME = "username";
 	
-	private Preferences pref;
+	private SharedPreferences pref;
 	
-	public Settings() {
-		pref = Preferences.userRoot().node("kube95");
+	public Settings(Context context) {
+		pref = PreferenceManager.getDefaultSharedPreferences(context);
 	}
 	public String getUserName() {
-		return pref.get(NODETITLEUSERNAME, "Name");
+		String name = pref.getString(NODETITLEUSERNAME, "Name");
+		if(!(name == "Name")) return name;
+		else return null;
+		
 	}
 	public void setUserName(String username) {
-		pref.put(NODETITLEUSERNAME, username);
+		Editor editor = pref.edit();
+		editor.putString(NODETITLEUSERNAME, username);
+		editor.commit();
 	}
 	public boolean isUserNameSet(){
-		try {
-			if(pref.nodeExists(NODETITLEUSERNAME)) return true;
-		} catch (BackingStoreException e) { return false; }
+			if(pref.contains(NODETITLEUSERNAME)) return true;
 		return false;
 	}
 }

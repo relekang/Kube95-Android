@@ -66,4 +66,20 @@
 	    	android:textSize="14dp"
 	    	android:textColor="@color/black"/>
     </LinearLayout>
+    <LinearLayout android:id="@+id/nextcleanweek"
+    	android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/nextcleaner">
+	    <TextView android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:textSize="14dp"
+	    	android:textColor="@color/black"
+	    	android:text="Neste uke du skal vaske: "/>
+	    <TextView android:id="@+id/nextcleanweektextview"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:textSize="14dp"
+	    	android:textColor="@color/black"/>
+    </LinearLayout>
 </RelativeLayout>

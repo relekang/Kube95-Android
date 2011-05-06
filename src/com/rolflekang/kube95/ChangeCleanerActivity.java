@@ -29,12 +29,12 @@ public class ChangeCleanerActivity extends Activity implements OnClickListener{
 		setContentView(R.layout.changecleaner);
 		
 		cleanGuy = new CleanGuy();
-		settings = new Settings();
+		settings = new Settings(getApplicationContext());
 		curentWeekView = (TextView) this.findViewById(R.id.changecleaner_week);
 		newWeekSelector = (Spinner) this.findViewById(R.id.changecleaner_newweekselector);
 		saveButton = (Button) this.findViewById(R.id.changecleaner_savebtn);
 		
-		Calendar cal = Calendar.getInstance();
+//		Calendar cal = Calendar.getInstance();
 //		String week = "Bytt fra uke " + cal.get(Calendar.WEEK_OF_YEAR) + " til";
 		String week = "Bytt fra uke " + cleanGuy.getNextCleanWeek(settings.getUserName()) + " til";
 		curentWeekView.setText(week);
