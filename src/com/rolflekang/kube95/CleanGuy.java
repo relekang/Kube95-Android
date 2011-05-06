@@ -5,14 +5,14 @@ import java.util.Calendar;
 
 
 public class CleanGuy {
-	private final int KATRINE = 9;
-	private final int ROLFOLE = 10;
-	private final int JULIE = 11;
-	private final int ROLFERIK = 12;
-	private final int ANDERS = 13;
-	private final int ANDREAS = 14;
-	private final int OLE = 15;
-	private final int HAVARD = 16;
+	private final int KATRINE = 26;
+	private final int ROLFOLE = 19;
+	private final int JULIE = 20;
+	private final int ROLFERIK = 21;
+	private final int ANDERS = 22;
+	private final int ANDREAS = 23;
+	private final int OLE = 24;
+	private final int HAVARD = 25;
 		
 	public String getCleaner() {
 		Calendar c = Calendar.getInstance();
@@ -23,8 +23,9 @@ public class CleanGuy {
 		return getCleaner(c.get(Calendar.WEEK_OF_YEAR) + 1);
 	}
 	public String getCleaner(int weeknr) {
-		if (weeknr == KATRINE || (weeknr - KATRINE) % 8 == 0) return "Katrine";
-		else if(weeknr == ROLFOLE || (weeknr - ROLFOLE) % 8 == 0) return "Rolf";
+		if(weeknr == 18) return "Ole"; //Custom
+		else if (weeknr == KATRINE || (weeknr - KATRINE) % 8 == 0) return "Katrine";
+		else if(weeknr == ROLFOLE || (weeknr - ROLFOLE) % 8 == 0) return "Rolf Ole";
 		else if(weeknr == JULIE || (weeknr - JULIE) % 8 == 0) return "Julie";
 		else if(weeknr == ROLFERIK || (weeknr - ROLFERIK) % 8 == 0)  return "Rolf Erik";
 		else if(weeknr == ANDERS || (weeknr - ANDERS) % 8 == 0)  return "Anders";

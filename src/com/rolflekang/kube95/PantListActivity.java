@@ -2,11 +2,8 @@ package com.rolflekang.kube95;
 
 import java.util.Date;
 
-import android.R.layout;
 import android.app.Dialog;
 import android.app.ListActivity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -85,7 +82,7 @@ public class PantListActivity extends ListActivity implements OnClickListener {
 		case R.id.savebtn:
 			String user = "";
 			if(settings.getUserName() != null) user = settings.getUserName();
-			else user = "test";// user = userField.getText().toString();
+			else user = userField.getText().toString();
 			
 			if(httpCon.sendPant(new Date(datePicker.getYear(),datePicker.getMonth(), datePicker.getDayOfMonth()), Double.parseDouble(amountField.getText().toString()), user )) {
 				pantList.parseStrings(httpCon.getList(httpCon.PANT));
