@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     
-    <item android:id="@+id/feedback"
+    <item android:id="@+id/menu_feedbackbtn"
         android:title="Gi tilbakemelding" />
+    <item android:id="@+id/menu_deleteusernamebtn"
+        android:title="Slett brukernavn" />
     
 </menu>
 
