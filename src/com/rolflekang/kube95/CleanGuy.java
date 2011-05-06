@@ -2,6 +2,7 @@ package com.rolflekang.kube95;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Map;
 
 
 public class CleanGuy {
@@ -13,7 +14,10 @@ public class CleanGuy {
 	private final int ANDREAS = 23;
 	private final int OLE = 24;
 	private final int HAVARD = 25;
-		
+	private HttpConnector hc;	
+	public CleanGuy() {
+		hc = new HttpConnector("rolflekang.com");
+	}	
 	public String getCleaner() {
 		Calendar c = Calendar.getInstance();
 		return getCleaner(c.get(Calendar.WEEK_OF_YEAR));
@@ -23,6 +27,7 @@ public class CleanGuy {
 		return getCleaner(c.get(Calendar.WEEK_OF_YEAR) + 1);
 	}
 	public String getCleaner(int weeknr) {
+		weeknr = checkIfSwapped(weeknr);
 		if(weeknr == 18) return "Ole"; //Custom
 		else if (weeknr == KATRINE || (weeknr - KATRINE) % 8 == 0) return "Katrine";
 		else if(weeknr == ROLFOLE || (weeknr - ROLFOLE) % 8 == 0) return "Rolf Ole";
@@ -54,9 +59,21 @@ public class CleanGuy {
 	public ArrayList<String> getNextCleanersList(int weeknr) {
 		ArrayList<String> list = new ArrayList<String>();
 		for (int i = 1; i < 8; i++) {
-			list.add((weeknr + i) +" - "+ getCleaner(weeknr + i));			
+			list.add((weeknr + i) +": "+ getCleaner(weeknr + i));			
 		}
 		return list;
 	}
+	public void swap(int oldWeekNr, int newWeekNr) {
+		hc.swap(oldWeekNr, newWeekNr);
+	}
+	private int checkIfSwapped(int week){
+		int[][] swaps = hc.getSwaps();
+		for (int[] nr : swaps) {
+			if(nr[0] == week) return nr[1];
+			else if(nr[1] == week) return nr[0];
+		}
+		return week;
+	}
+
 
 }

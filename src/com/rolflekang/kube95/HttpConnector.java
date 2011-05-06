@@ -69,4 +69,49 @@ public class HttpConnector {
 		}
 		return (String[]) tmp.toArray(new String[tmp.size()]);
 	}
+	public int[][] getSwaps() {
+		ArrayList<int[]> list = new ArrayList<int[]>();
+		
+		BufferedReader in = null;
+		try {
+			HttpClient client = new DefaultHttpClient();
+			HttpGet request = new HttpGet();
+			request.setURI(new URI(url+"pantekassa/s.html"));
+			HttpResponse response = client.execute(request);
+			in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+			String line = "";
+			while ((line = in.readLine()) != null) {
+				String[] tmp = line.split("\\|");
+				list.add(new int[]{Integer.parseInt(tmp[0]),Integer.parseInt(tmp[1])});
+			}
+			in.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} finally {
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		int[][] swaps = new int[list.size()][2];
+		for (int[] is : list) {
+			swaps[list.indexOf(is)] = is;
+		}
+		return swaps;
+	}
+	public boolean swap(int oldWeekNr, int newWeekNr) {
+		HttpClient client = new DefaultHttpClient();
+		HttpGet request = new HttpGet();
+		try {
+			request.setURI(new URI(url+"pantekassa/s.php?ow="+oldWeekNr+"&nw="+newWeekNr));
+			HttpResponse response = client.execute(request);
+			response.getEntity().getContent();
+		} catch (URISyntaxException e) { return false; } catch (ClientProtocolException e) { return false; } catch (IOException e) { return false; }
+		return true;
+	}
 }
