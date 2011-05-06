@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ChangeCleanerActivity extends Activity implements OnClickListener{
 	private CleanGuy cleanGuy;
@@ -29,12 +30,9 @@ public class ChangeCleanerActivity extends Activity implements OnClickListener{
 		newWeekSelector = (Spinner) this.findViewById(R.id.changecleaner_newweekselector);
 		saveButton = (Button) this.findViewById(R.id.changecleaner_savebtn);
 		
-//		Calendar cal = Calendar.getInstance();
-//		String week = "Bytt fra uke " + cal.get(Calendar.WEEK_OF_YEAR) + " til";
 		String week = "Bytt fra uke " + cleanGuy.getNextCleanWeek(settings.getUserName()) + " til";
 		curentWeekView.setText(week);
 		
-//		nextList = cleanGuy.getNextCleanersList(cal.get(Calendar.WEEK_OF_YEAR));
 		nextList = cleanGuy.getNextCleanersList(cleanGuy.getNextCleanWeek(settings.getUserName()));
 		spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item , nextList);
 		newWeekSelector.setAdapter(spinnerAdapter);
@@ -45,5 +43,18 @@ public class ChangeCleanerActivity extends Activity implements OnClickListener{
 	
 	public void onClick(View v) {
 			//TODO:
+			switch (v.getId()) {
+			case R.id.changecleaner_savebtn:
+				String selected = (String) newWeekSelector.getSelectedItem();
+				String[] week = selected.split("\\:");
+				int newWeekNr = Integer.parseInt(week[0]);
+				cleanGuy.swap(cleanGuy.getNextCleanWeek(settings.getUserName()), newWeekNr);
+				Toast.makeText(getApplicationContext(), "Du byttet uke "+cleanGuy.getNextCleanWeek(settings.getUserName())+" med uke "+newWeekNr, Toast.LENGTH_LONG).show();
+				finish();
+				break;
+
+			default:
+				break;
+			}
 	}
 }
