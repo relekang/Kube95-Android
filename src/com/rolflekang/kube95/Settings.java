@@ -28,4 +28,10 @@ public class Settings {
 			if(pref.contains(NODETITLEUSERNAME)) return true;
 		return false;
 	}
+	public void deleteUserName(){
+		pref.edit().remove(NODETITLEUSERNAME);
+	}
+	public void deleteAll(){	
+		pref.edit().clear().commit();
+	}
 }
