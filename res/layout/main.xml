@@ -22,6 +22,17 @@
     	android:textColor="#f5f5f5"
     	android:background="@drawable/custombtn"
     	/>
+    <Button android:id="@+id/menuchangecleanerbtn"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentRight="true"
+    	android:layout_marginRight="40dp"
+    	android:layout_marginTop="110dp"
+    	android:padding="10dp"
+    	android:text="Bytt vaskeuke"
+    	android:textColor="#f5f5f5"
+    	android:background="@drawable/custombtn"
+    	/>
     <LinearLayout android:id="@+id/currentcleaner"
     	android:orientation="horizontal"
 	    android:layout_width="fill_parent"

@@ -26,6 +26,7 @@ public class PantListActivity extends ListActivity implements OnClickListener {
 	private Pantekassa pantList;
 	private PantAdapter pAdapter;
 	private HttpConnector httpCon;
+	private Settings settings;
 	private TextView sumTextField;
 	private Button saveBtn;
 	private EditText amountField, userField;
@@ -39,6 +40,7 @@ public class PantListActivity extends ListActivity implements OnClickListener {
 		httpCon = new HttpConnector("10.0.1.3");
 		pantList.parseStrings(httpCon.getList(httpCon.PANT));
 		pAdapter = new PantAdapter(this, R.layout.pantlistrow, pantList);
+		settings = new Settings();
 		setContentView(R.layout.pantlist);
 		setListAdapter(pAdapter);
 		sumTextField = (TextView) this.findViewById(R.id.sumtext);
@@ -69,6 +71,7 @@ public class PantListActivity extends ListActivity implements OnClickListener {
 	        	amountField = (EditText) addDialog.findViewById(R.id.amountfield);
 	        	datePicker = (DatePicker) addDialog.findViewById(R.id.datepicker);
 	        	userField = (EditText) addDialog.findViewById(R.id.userfield);
+	        	if(settings.getUserName() != null) userField.setVisibility(8);
 	        	saveBtn.setOnClickListener(this);
 	        	addDialog.show();
 	        	break;
@@ -80,7 +83,11 @@ public class PantListActivity extends ListActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.savebtn:
-			if(httpCon.sendPant(new Date(datePicker.getYear(),datePicker.getMonth(), datePicker.getDayOfMonth()), Double.parseDouble(amountField.getText().toString()), userField.getText().toString()))
+			String user = "";
+			if(settings.getUserName() != null) user = settings.getUserName();
+			else user = "test";// user = userField.getText().toString();
+			
+			if(httpCon.sendPant(new Date(datePicker.getYear(),datePicker.getMonth(), datePicker.getDayOfMonth()), Double.parseDouble(amountField.getText().toString()), user ))
 				Toast.makeText(getApplicationContext(), "Panten ble lagt inn", Toast.LENGTH_SHORT ).show();
 			else
 				Toast.makeText(getApplicationContext(), "Det oppstod en feil", Toast.LENGTH_SHORT ).show();
