@@ -45,11 +45,12 @@
 		android:layout_width="2dp"
 		android:layout_height="fill_parent"
 		android:background="@drawable/divider_vertical_dark"/>
-	<LinearLayout 
+	<LinearLayout android:id="@+id/widgetcleanerholder"
 		android:layout_height="match_parent"
 		android:layout_width="match_parent" 
 		android:orientation="vertical"
-		android:padding="10dp">
+		android:padding="10dp"
+		android:background="@drawable/widget_states">
 	    <LinearLayout 
 	    	android:layout_height="wrap_content" 
 	    	android:layout_width="match_parent">

@@ -87,8 +87,11 @@ public class PantListActivity extends ListActivity implements OnClickListener {
 			if(settings.getUserName() != null) user = settings.getUserName();
 			else user = "test";// user = userField.getText().toString();
 			
-			if(httpCon.sendPant(new Date(datePicker.getYear(),datePicker.getMonth(), datePicker.getDayOfMonth()), Double.parseDouble(amountField.getText().toString()), user ))
+			if(httpCon.sendPant(new Date(datePicker.getYear(),datePicker.getMonth(), datePicker.getDayOfMonth()), Double.parseDouble(amountField.getText().toString()), user )) {
+				pantList.parseStrings(httpCon.getList(httpCon.PANT));
+				pAdapter.notifyDataSetChanged();
 				Toast.makeText(getApplicationContext(), "Panten ble lagt inn", Toast.LENGTH_SHORT ).show();
+			}
 			else
 				Toast.makeText(getApplicationContext(), "Det oppstod en feil", Toast.LENGTH_SHORT ).show();
 			addDialog.dismiss();

@@ -28,6 +28,9 @@ public class WidgetProvider extends AppWidgetProvider {
         // Perform this loop procedure for each App Widget that belongs to this provider
         for (int i=0; i<N; i++) {
             int appWidgetId = appWidgetIds[i];
+            
+            Intent mainIntent = new Intent(context,MainActivity.class);
+            PendingIntent pendingMainIntent = PendingIntent.getActivity(context, 0, mainIntent, 0);
 
             Intent launchIntent = new Intent(context, PantListActivity.class);
             PendingIntent pendingLaunchIntent = PendingIntent.getActivity(context, 0, launchIntent, 0);
@@ -40,6 +43,7 @@ public class WidgetProvider extends AppWidgetProvider {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
             views.setOnClickPendingIntent(R.id.widgetpantbtn, pendingLaunchIntent);
             views.setOnClickPendingIntent(R.id.widgetsumholder,pendingUpdateIntent);
+            views.setOnClickPendingIntent(R.id.widgetcleanerholder, pendingMainIntent);
             
             views.setTextViewText(R.id.widgetcurrentcleaner, cleaner.getCleaner());
             views.setTextViewText(R.id.widgetnextcleaner, cleaner.getNextCleaner());

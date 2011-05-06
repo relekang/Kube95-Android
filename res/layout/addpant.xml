@@ -10,7 +10,8 @@
     	android:layout_height="wrap_content"
     	android:hint="100"
     	android:singleLine="true"
-    	android:numeric="decimal"/>
+    	android:numeric="decimal"
+    	android:inputType="numberDecimal"/>
     <DatePicker android:id="@+id/datepicker"
     	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
