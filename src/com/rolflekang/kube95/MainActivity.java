@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements OnClickListener{
-	private Button menuPantBtn;
+	private Button menuPantBtn,changeCleanerButton;
 	private TextView cleanerTextView;
 	private TextView nextCleanerTextView;
 	
@@ -28,6 +28,8 @@ public class MainActivity extends Activity implements OnClickListener{
         
         menuPantBtn = (Button) this.findViewById(R.id.menupantbtn);
         menuPantBtn.setOnClickListener(this);
+        changeCleanerButton = (Button) this.findViewById(R.id.menuchangecleanerbtn);
+        changeCleanerButton.setOnClickListener(this);
     }
 
 	public void onClick(View v) {
@@ -35,6 +37,10 @@ public class MainActivity extends Activity implements OnClickListener{
 		case R.id.menupantbtn:
 			Intent i = new Intent(this, PantListActivity.class);
 			startActivityForResult(i, 0);
+			break;
+		case R.id.menuchangecleanerbtn:
+			Intent i1 = new Intent(this, ChangeCleanerActivity.class);
+			startActivityForResult(i1, 0);
 			break;
 //		case R.id.feedbackbtn:
 //			Toast.makeText(this, "...", Toast.LENGTH_SHORT);
