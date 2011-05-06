@@ -55,7 +55,6 @@ public class MainActivity extends Activity implements OnClickListener{
 		userNameDialog.setTitle("Legg inn navnet ditt");
 		userNameDialog.setCancelable(false);
 		userNameField = (EditText) userNameDialog.findViewById(R.id.usernamefield);
-		userNameField.setInputType(EditorInfo.TYPE_TEXT_FLAG_CAP_WORDS);
 		saveUserNameButton = (Button) userNameDialog.findViewById(R.id.usernamesavebtn);
 		saveUserNameButton.setOnClickListener(this);
 		userNameDialog.show();
