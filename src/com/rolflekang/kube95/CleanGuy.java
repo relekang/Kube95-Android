@@ -28,8 +28,7 @@ public class CleanGuy {
 	}
 	public String getCleaner(int weeknr) {
 		weeknr = checkIfSwapped(weeknr);
-		if(weeknr == 18) return "Ole"; //Custom
-		else if (weeknr == KATRINE || (weeknr - KATRINE) % 8 == 0) return "Katrine";
+		if (weeknr == KATRINE || (weeknr - KATRINE) % 8 == 0) return "Katrine";
 		else if(weeknr == ROLFOLE || (weeknr - ROLFOLE) % 8 == 0) return "Rolf Ole";
 		else if(weeknr == JULIE || (weeknr - JULIE) % 8 == 0) return "Julie";
 		else if(weeknr == ROLFERIK || (weeknr - ROLFERIK) % 8 == 0)  return "Rolf Erik";
