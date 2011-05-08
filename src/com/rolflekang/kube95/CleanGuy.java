@@ -2,7 +2,7 @@ package com.rolflekang.kube95;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Map;
+import java.util.Locale;
 
 
 public class CleanGuy {
@@ -19,11 +19,11 @@ public class CleanGuy {
 		hc = new HttpConnector("rolflekang.com");
 	}	
 	public String getCleaner() {
-		Calendar c = Calendar.getInstance();
+		Calendar c = Calendar.getInstance(Locale.UK);
 		return getCleaner(c.get(Calendar.WEEK_OF_YEAR));
 	}
 	public String getNextCleaner() {
-		Calendar c = Calendar.getInstance();
+		Calendar c = Calendar.getInstance(Locale.UK);
 		return getCleaner(c.get(Calendar.WEEK_OF_YEAR) + 1);
 	}
 	public String getCleaner(int weeknr) {
