@@ -18,10 +18,20 @@ import org.apache.http.impl.client.DefaultHttpClient;
 public class HttpConnector {
 
 	public final int PANT = 0;
+	public final int OLDSERVER = 0;
+	public final int DJANGOSERVER = 1;
+	
 
 	private String url;
-	public HttpConnector(String ip){
-		this.url =  "http://rolflekang.com/";// /kube95/api/list/";
+	public HttpConnector(int server){
+		switch (server) {
+		case OLDSERVER:
+				this.url = "http://rolflekang.com/";
+			break;
+		case DJANGOSERVER:
+			this.url =  "http://129.241.150.183:8000/api/";
+			break;
+		}
 	}
 	public String[] getList(int listType){
 		switch(listType){
@@ -46,12 +56,12 @@ public class HttpConnector {
 		try {
 			HttpClient client = new DefaultHttpClient();
 			HttpGet request = new HttpGet();
-			request.setURI(new URI(url+"pantekassa/index.html"));
+			request.setURI(new URI(url+"pantekassa/"));
 			HttpResponse response = client.execute(request);
 			in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 			String line = "";
 			while ((line = in.readLine()) != null) {
-				tmp.add(line);
+				if(line.length() > 0) tmp.add(line);
 			}
 			in.close();
 		} catch (IOException e) {
@@ -102,7 +112,8 @@ public class HttpConnector {
 		for (int[] is : list) {
 			swaps[list.indexOf(is)] = is;
 		}
-		return swaps;
+		return new int[][]{{16,18}};
+//		return swaps;
 	}
 	public boolean swap(int oldWeekNr, int newWeekNr) {
 		HttpClient client = new DefaultHttpClient();

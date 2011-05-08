@@ -21,7 +21,7 @@ public class WidgetProvider extends AppWidgetProvider {
         final int N = appWidgetIds.length;
         
         pantList = new Pantekassa();        
-    	httpCon = new HttpConnector("10.0.1.3");
+    	httpCon = new HttpConnector(1);
     	pantList.parseStrings(httpCon.getList(httpCon.PANT));
         CleanGuy cleaner = new CleanGuy();
 
