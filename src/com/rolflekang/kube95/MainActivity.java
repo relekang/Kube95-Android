@@ -68,8 +68,9 @@ public class MainActivity extends Activity implements OnClickListener{
 			startActivityForResult(i, 0);
 			break;
 		case R.id.menuchangecleanerbtn:
-			Intent i1 = new Intent(this, ChangeCleanerActivity.class);
-			startActivityForResult(i1, 0);
+//			Intent i1 = new Intent(this, ChangeCleanerActivity.class);
+//			startActivityForResult(i1, 0);
+			Toast.makeText(this, "This functionality is currently not available", Toast.LENGTH_LONG).show();
 			break;
 		case R.id.usernamesavebtn:
 			if(userNameField.getText().toString() == ""){

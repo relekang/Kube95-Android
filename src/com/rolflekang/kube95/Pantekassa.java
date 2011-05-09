@@ -3,19 +3,22 @@ package com.rolflekang.kube95;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.graphics.Paint.Join;
+
 
 @SuppressWarnings("serial")
 public class Pantekassa extends ArrayList<Pant>{
 	
 	public Pantekassa() {  }
 	
-	public void parseStrings(String[] list) {
-		for (String s : list) {
-			String[] bits = s.split("\\|");
-			String[] d = bits[0].split("-");
-			Calendar cal = Calendar.getInstance();
-			cal.set(Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.parseInt(d[2]));
-			this.add(new Pant(cal.getTime(), Double.parseDouble(bits[1]), bits[2]));	
+	public void update(ArrayList<Pant> list) {
+		this.clear();
+		for (Pant pant : list) {
+			this.add(pant);
 		}
 	}
 

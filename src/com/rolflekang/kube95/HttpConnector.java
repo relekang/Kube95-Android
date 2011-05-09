@@ -12,22 +12,45 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.protocol.HTTP;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.util.Log;
 
 
 public class HttpConnector {
 
 	public final int PANT = 0;
+	public final int OLDSERVER = 0;
+	public final int DJANGOSERVER = 1;
+
 
 	private String url;
-	public HttpConnector(String ip){
-		this.url =  "http://rolflekang.com/";// /kube95/api/list/";
-	}
-	public String[] getList(int listType){
-		switch(listType){
-		case PANT: return getPant();
-		default: return null;
+	private JsonParser jsonParser;
+	public HttpConnector(int server){
+		jsonParser = new JsonParser();
+		switch (server) {
+		case OLDSERVER:
+			this.url = "http://rolflekang.com/";
+			break;
+		case DJANGOSERVER:
+			this.url =  "http://129.241.150.183:8000/api/";
+			break;
 		}
+	}
+	public ArrayList<Pant> getPant(){
+			try {
+				return jsonParser.parsePantekassa(getPant(0));
+			} catch (JSONException e) { 
+				e.printStackTrace(); 
+				return null;
+			}
 	}
 	public boolean sendPant(Date date, double amount, String user){
 		HttpClient client = new DefaultHttpClient();
@@ -39,19 +62,18 @@ public class HttpConnector {
 		} catch (URISyntaxException e) { return false; } catch (ClientProtocolException e) { return false; } catch (IOException e) { return false; }
 		return true;
 	}
-	private String[] getPant() {
-
-		ArrayList<String> tmp = new ArrayList<String>();
+	private String getPant(int server) {
+		String tmmp ="";
 		BufferedReader in = null;
 		try {
 			HttpClient client = new DefaultHttpClient();
 			HttpGet request = new HttpGet();
-			request.setURI(new URI(url+"pantekassa/index.html"));
+			request.setURI(new URI(url+"pantekassa/"));
 			HttpResponse response = client.execute(request);
 			in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 			String line = "";
 			while ((line = in.readLine()) != null) {
-				tmp.add(line);
+				tmmp += line;
 			}
 			in.close();
 		} catch (IOException e) {
@@ -60,29 +82,23 @@ public class HttpConnector {
 			e.printStackTrace();
 		} finally {
 			if (in != null) {
-				try {
-					in.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				if (in != null) { try { in.close(); } catch (IOException e) { e.printStackTrace(); } }
 			}
 		}
-		return (String[]) tmp.toArray(new String[tmp.size()]);
+		return tmmp;
 	}
 	public int[][] getSwaps() {
-		ArrayList<int[]> list = new ArrayList<int[]>();
-		
+		String jsonString = "";
 		BufferedReader in = null;
 		try {
 			HttpClient client = new DefaultHttpClient();
 			HttpGet request = new HttpGet();
-			request.setURI(new URI(url+"pantekassa/s.html"));
+			request.setURI(new URI(url+"swaps/"));
 			HttpResponse response = client.execute(request);
 			in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 			String line = "";
 			while ((line = in.readLine()) != null) {
-				String[] tmp = line.split("\\|");
-				list.add(new int[]{Integer.parseInt(tmp[0]),Integer.parseInt(tmp[1])});
+				jsonString += line;
 			}
 			in.close();
 		} catch (IOException e) {
@@ -90,19 +106,14 @@ public class HttpConnector {
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		} finally {
-			if (in != null) {
-				try {
-					in.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+			if (in != null) { try { in.close(); } catch (IOException e) { e.printStackTrace(); } }
 		}
-		int[][] swaps = new int[list.size()][2];
-		for (int[] is : list) {
-			swaps[list.indexOf(is)] = is;
+		try {
+			return jsonParser.parseSwaps(jsonString);
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
-		return swaps;
+		return null;
 	}
 	public boolean swap(int oldWeekNr, int newWeekNr) {
 		HttpClient client = new DefaultHttpClient();
@@ -114,4 +125,18 @@ public class HttpConnector {
 		} catch (URISyntaxException e) { return false; } catch (ClientProtocolException e) { return false; } catch (IOException e) { return false; }
 		return true;
 	}
-}
+	public void sendJsonRequest(String url, JSONObject json) throws ClientProtocolException, IOException{
+		HttpClient client = new DefaultHttpClient();
+		HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000); //Timeout Limit
+		HttpResponse response;
+		HttpPost post = new HttpPost(url);
+		StringEntity se = new StringEntity( "JSON: " + json.toString());  
+		se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+		post.setEntity(se);
+		response = client.execute(post);
+//		/*Checking response */
+//		if(response!=null){
+//			InputStream in = response.getEntity().getContent(); //Get the data in the entity
+
+		}
+	}

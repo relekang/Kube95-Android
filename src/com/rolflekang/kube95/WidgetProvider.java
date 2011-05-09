@@ -21,8 +21,8 @@ public class WidgetProvider extends AppWidgetProvider {
         final int N = appWidgetIds.length;
         
         pantList = new Pantekassa();        
-    	httpCon = new HttpConnector("10.0.1.3");
-    	pantList.parseStrings(httpCon.getList(httpCon.PANT));
+    	httpCon = new HttpConnector(1);
+    	pantList.update(httpCon.getPant());
         CleanGuy cleaner = new CleanGuy();
 
         // Perform this loop procedure for each App Widget that belongs to this provider
