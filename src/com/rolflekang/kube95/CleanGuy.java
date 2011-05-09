@@ -16,7 +16,7 @@ public class CleanGuy {
 	private final int HAVARD = 25;
 	private HttpConnector hc;	
 	public CleanGuy() {
-		hc = new HttpConnector(0);
+		hc = new HttpConnector(1);
 	}	
 	public String getCleaner() {
 		Calendar c = Calendar.getInstance(Locale.UK);

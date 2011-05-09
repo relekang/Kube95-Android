@@ -1,5 +1,6 @@
 package com.rolflekang.kube95;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import android.app.Dialog;
@@ -35,14 +36,13 @@ public class PantListActivity extends ListActivity implements OnClickListener {
 		addDialog = new Dialog(this);
 		pantList = new Pantekassa();
 		httpCon = new HttpConnector(1);
-		pantList.parseStrings(httpCon.getList(httpCon.PANT));
+		pantList.update(httpCon.getPant());
 		pAdapter = new PantAdapter(this, R.layout.pantlistrow, pantList);
 		settings = new Settings(getApplicationContext());
 		setContentView(R.layout.pantlist);
 		setListAdapter(pAdapter);
 		sumTextField = (TextView) this.findViewById(R.id.sumtext);
 		sumTextField.setText("Det er " + pantList.getSum() + "kr i pantekassa!");
-//		createTestList();
 		ListView list = getListView();
 		registerForContextMenu(list);
 		list.setOnItemClickListener(new OnItemClickListener() {
@@ -62,15 +62,16 @@ public class PantListActivity extends ListActivity implements OnClickListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
 	        case R.id.add:
-	        	addDialog.setContentView(R.layout.addpant);
-	        	addDialog.setTitle("Legg til pant");
-	        	saveBtn = (Button) addDialog.findViewById(R.id.savebtn);
-	        	amountField = (EditText) addDialog.findViewById(R.id.amountfield);
-	        	datePicker = (DatePicker) addDialog.findViewById(R.id.datepicker);
-	        	userField = (EditText) addDialog.findViewById(R.id.userfield);
-	        	if(settings.getUserName() != null) userField.setVisibility(8);
-	        	saveBtn.setOnClickListener(this);
-	        	addDialog.show();
+//	        	addDialog.setContentView(R.layout.addpant);
+//	        	addDialog.setTitle("Legg til pant");
+//	        	saveBtn = (Button) addDialog.findViewById(R.id.savebtn);
+//	        	amountField = (EditText) addDialog.findViewById(R.id.amountfield);
+//	        	datePicker = (DatePicker) addDialog.findViewById(R.id.datepicker);
+//	        	userField = (EditText) addDialog.findViewById(R.id.userfield);
+//	        	if(settings.getUserName() != null) userField.setVisibility(8);
+//	        	saveBtn.setOnClickListener(this);
+//	        	addDialog.show();
+	        	Toast.makeText(this, "This functionality is currently not available", Toast.LENGTH_LONG).show();
 	        	break;
 
 	    }
@@ -85,7 +86,7 @@ public class PantListActivity extends ListActivity implements OnClickListener {
 			else user = userField.getText().toString();
 			
 			if(httpCon.sendPant(new Date(datePicker.getYear(),datePicker.getMonth(), datePicker.getDayOfMonth()), Double.parseDouble(amountField.getText().toString()), user )) {
-				pantList.parseStrings(httpCon.getList(httpCon.PANT));
+				pantList.update(httpCon.getPant());
 				pAdapter.notifyDataSetChanged();
 				Toast.makeText(getApplicationContext(), "Panten ble lagt inn", Toast.LENGTH_SHORT ).show();
 			}

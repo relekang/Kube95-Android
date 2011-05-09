@@ -22,7 +22,7 @@ public class WidgetProvider extends AppWidgetProvider {
         
         pantList = new Pantekassa();        
     	httpCon = new HttpConnector(1);
-    	pantList.parseStrings(httpCon.getList(httpCon.PANT));
+    	pantList.update(httpCon.getPant());
         CleanGuy cleaner = new CleanGuy();
 
         // Perform this loop procedure for each App Widget that belongs to this provider
