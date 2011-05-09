@@ -35,7 +35,7 @@ public class PantListActivity extends ListActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		addDialog = new Dialog(this);
 		pantList = new Pantekassa();
-		httpCon = new HttpConnector(1);
+		httpCon = new HttpConnector(getApplicationContext(),1);
 		pantList.update(httpCon.getPant());
 		pAdapter = new PantAdapter(this, R.layout.pantlistrow, pantList);
 		settings = new Settings(getApplicationContext());

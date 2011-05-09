@@ -33,5 +33,11 @@ public class JsonParser {
 		}
 		return swaps;
 	}
+	public JSONObject createSwap(int oldWeekNr, int newWeekNr) throws JSONException {
+		JSONObject jObject = new JSONObject();
+		jObject.put("oldweek", oldWeekNr);
+		jObject.put("newweek", newWeekNr);
+		return jObject;
+	}
 
 }

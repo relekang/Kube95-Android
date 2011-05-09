@@ -24,7 +24,7 @@ public class ChangeCleanerActivity extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.changecleaner);
 		
-		cleanGuy = new CleanGuy();
+		cleanGuy = new CleanGuy(getApplicationContext());
 		settings = new Settings(getApplicationContext());
 		curentWeekView = (TextView) this.findViewById(R.id.changecleaner_week);
 		newWeekSelector = (Spinner) this.findViewById(R.id.changecleaner_newweekselector);

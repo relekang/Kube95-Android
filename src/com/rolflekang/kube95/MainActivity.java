@@ -34,7 +34,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		if(!settings.isUserNameSet()) viewUserNameDialog();
 
 
-		cleanGuy = new CleanGuy();
+		cleanGuy = new CleanGuy(getApplicationContext());
 
 		cleanerTextView = (TextView) this.findViewById(R.id.cleanertextview);
 		cleanerTextView.setText(cleanGuy.getCleaner());
@@ -47,6 +47,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		menuPantBtn.setOnClickListener(this);
 		changeCleanerButton = (Button) this.findViewById(R.id.menuchangecleanerbtn);
 		changeCleanerButton.setOnClickListener(this);
+		changeCleanerButton.setVisibility(8);
 	}
 
 	private void viewUserNameDialog() {
@@ -69,9 +70,9 @@ public class MainActivity extends Activity implements OnClickListener{
 			startActivityForResult(i, 0);
 			break;
 		case R.id.menuchangecleanerbtn:
-//			Intent i1 = new Intent(this, ChangeCleanerActivity.class);
-//			startActivityForResult(i1, 0);
-			Toast.makeText(this, "This functionality is currently not available", Toast.LENGTH_LONG).show();
+			Intent i1 = new Intent(this, ChangeCleanerActivity.class);
+			startActivityForResult(i1, 0);
+//			Toast.makeText(this, "This functionality is currently not available", Toast.LENGTH_LONG).show();
 			break;
 		case R.id.usernamesavebtn:
 			if(userNameField.getText().toString() == ""){
