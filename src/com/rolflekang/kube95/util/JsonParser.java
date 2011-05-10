@@ -1,4 +1,4 @@
-package com.rolflekang.kube95;
+package com.rolflekang.kube95.util;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -6,6 +6,8 @@ import java.util.Calendar;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.rolflekang.kube95.Pant;
 
 public class JsonParser {
 	
@@ -32,6 +34,12 @@ public class JsonParser {
 			swaps[i][1] = jObject.getInt("newweek");
 		}
 		return swaps;
+	}
+	public JSONObject createSwap(int oldWeekNr, int newWeekNr) throws JSONException {
+		JSONObject jObject = new JSONObject();
+		jObject.put("oldweek", oldWeekNr);
+		jObject.put("newweek", newWeekNr);
+		return jObject;
 	}
 
 }

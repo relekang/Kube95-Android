@@ -1,4 +1,4 @@
-package com.rolflekang.kube95;
+package com.rolflekang.kube95.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;

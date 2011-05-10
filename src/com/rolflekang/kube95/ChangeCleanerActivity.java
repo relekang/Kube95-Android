@@ -1,6 +1,9 @@
 package com.rolflekang.kube95;
 
 import java.util.ArrayList;
+
+import com.rolflekang.kube95.util.Settings;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +27,7 @@ public class ChangeCleanerActivity extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.changecleaner);
 		
-		cleanGuy = new CleanGuy();
+		cleanGuy = new CleanGuy(getApplicationContext());
 		settings = new Settings(getApplicationContext());
 		curentWeekView = (TextView) this.findViewById(R.id.changecleaner_week);
 		newWeekSelector = (Spinner) this.findViewById(R.id.changecleaner_newweekselector);

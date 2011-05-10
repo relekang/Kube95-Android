@@ -3,6 +3,9 @@ package com.rolflekang.kube95;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.rolflekang.kube95.util.HttpConnector;
+import com.rolflekang.kube95.util.Settings;
+
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -35,7 +38,7 @@ public class PantListActivity extends ListActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		addDialog = new Dialog(this);
 		pantList = new Pantekassa();
-		httpCon = new HttpConnector(1);
+		httpCon = new HttpConnector(getApplicationContext(),1);
 		pantList.update(httpCon.getPant());
 		pAdapter = new PantAdapter(this, R.layout.pantlistrow, pantList);
 		settings = new Settings(getApplicationContext());

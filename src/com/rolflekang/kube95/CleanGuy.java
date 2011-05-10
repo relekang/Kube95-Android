@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
+import com.rolflekang.kube95.util.HttpConnector;
+
+import android.content.Context;
+
 
 public class CleanGuy {
 	private final int KATRINE = 26;
@@ -15,8 +19,8 @@ public class CleanGuy {
 	private final int OLE = 24;
 	private final int HAVARD = 25;
 	private HttpConnector hc;	
-	public CleanGuy() {
-		hc = new HttpConnector(1);
+	public CleanGuy(Context context) {
+		hc = new HttpConnector(context,1);
 	}	
 	public String getCleaner() {
 		Calendar c = Calendar.getInstance(Locale.UK);
@@ -28,6 +32,18 @@ public class CleanGuy {
 	}
 	public String getCleaner(int weeknr) {
 		weeknr = checkIfSwapped(weeknr);
+		if (weeknr == KATRINE || (weeknr - KATRINE) % 8 == 0) return "Katrine";
+		else if(weeknr == ROLFOLE || (weeknr - ROLFOLE) % 8 == 0) return "Rolf Ole";
+		else if(weeknr == JULIE || (weeknr - JULIE) % 8 == 0) return "Julie";
+		else if(weeknr == ROLFERIK || (weeknr - ROLFERIK) % 8 == 0)  return "Rolf Erik";
+		else if(weeknr == ANDERS || (weeknr - ANDERS) % 8 == 0)  return "Anders";
+		else if(weeknr == ANDREAS || (weeknr - ANDREAS) % 8 == 0)  return "Andreas";
+		else if(weeknr == OLE || (weeknr - OLE) % 8 == 0)  return "Ole";
+		else if(weeknr == HAVARD || (weeknr - HAVARD) % 8 == 0)  return "Havard";
+		return "Random";
+	}
+	private String getCleaner(int weeknr, int[][] swapList) {
+		weeknr = checkIfSwapped(weeknr, swapList);
 		if (weeknr == KATRINE || (weeknr - KATRINE) % 8 == 0) return "Katrine";
 		else if(weeknr == ROLFOLE || (weeknr - ROLFOLE) % 8 == 0) return "Rolf Ole";
 		else if(weeknr == JULIE || (weeknr - JULIE) % 8 == 0) return "Julie";
@@ -57,8 +73,9 @@ public class CleanGuy {
 	}
 	public ArrayList<String> getNextCleanersList(int weeknr) {
 		ArrayList<String> list = new ArrayList<String>();
+		int[][] swapList = hc.getSwaps();
 		for (int i = 1; i < 8; i++) {
-			list.add((weeknr + i) +": "+ getCleaner(weeknr + i));			
+			list.add((weeknr + i) +": "+ getCleaner(weeknr + i, swapList));			
 		}
 		return list;
 	}
@@ -73,6 +90,12 @@ public class CleanGuy {
 		}
 		return week;
 	}
-
+	private int checkIfSwapped(int week, int[][] swaps) {
+		for (int[] nr : swaps) {
+			if(nr[0] == week) return nr[1];
+			else if(nr[1] == week) return nr[0];
+		}
+		return week;
+	}
 
 }
