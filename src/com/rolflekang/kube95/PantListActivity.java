@@ -3,6 +3,9 @@ package com.rolflekang.kube95;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.rolflekang.kube95.util.HttpConnector;
+import com.rolflekang.kube95.util.Settings;
+
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.os.Bundle;

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
+import com.rolflekang.kube95.util.HttpConnector;
+
 import android.content.Context;
 
 
@@ -71,13 +73,12 @@ public class CleanGuy {
 	}
 	public ArrayList<String> getNextCleanersList(int weeknr) {
 		ArrayList<String> list = new ArrayList<String>();
-		int[][] swapList = hc.getSwaps();;
+		int[][] swapList = hc.getSwaps();
 		for (int i = 1; i < 8; i++) {
 			list.add((weeknr + i) +": "+ getCleaner(weeknr + i, swapList));			
 		}
 		return list;
 	}
-	
 	public void swap(int oldWeekNr, int newWeekNr) {
 		hc.swap(oldWeekNr, newWeekNr);
 	}

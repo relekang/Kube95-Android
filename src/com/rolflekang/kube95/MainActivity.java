@@ -2,6 +2,8 @@ package com.rolflekang.kube95;
 
 
 
+import com.rolflekang.kube95.util.Settings;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;

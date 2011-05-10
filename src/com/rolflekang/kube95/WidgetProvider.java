@@ -1,5 +1,7 @@
 package com.rolflekang.kube95;
 
+import com.rolflekang.kube95.util.HttpConnector;
+
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
