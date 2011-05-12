@@ -44,14 +44,14 @@ public class CleanGuy {
 	}
 	private String getCleaner(int weeknr, int[][] swapList) {
 		weeknr = checkIfSwapped(weeknr, swapList);
-		if (weeknr == KATRINE || (weeknr - KATRINE) % 8 == 0) return "Katrine";
-		else if(weeknr == ROLFOLE || (weeknr - ROLFOLE) % 8 == 0) return "Rolf Ole";
-		else if(weeknr == JULIE || (weeknr - JULIE) % 8 == 0) return "Julie";
-		else if(weeknr == ROLFERIK || (weeknr - ROLFERIK) % 8 == 0)  return "Rolf Erik";
-		else if(weeknr == ANDERS || (weeknr - ANDERS) % 8 == 0)  return "Anders";
-		else if(weeknr == ANDREAS || (weeknr - ANDREAS) % 8 == 0)  return "Andreas";
-		else if(weeknr == OLE || (weeknr - OLE) % 8 == 0)  return "Ole";
-		else if(weeknr == HAVARD || (weeknr - HAVARD) % 8 == 0)  return "Havard";
+		if ((weeknr - KATRINE) % 8 == 0) return "Katrine";
+		else if((weeknr - ROLFOLE) % 8 == 0) return "Rolf Ole";
+		else if((weeknr - JULIE) % 8 == 0) return "Julie";
+		else if((weeknr - ROLFERIK) % 8 == 0)  return "Rolf Erik";
+		else if((weeknr - ANDERS) % 8 == 0)  return "Anders";
+		else if((weeknr - ANDREAS) % 8 == 0)  return "Andreas";
+		else if((weeknr - OLE) % 8 == 0)  return "Ole";
+		else if((weeknr - HAVARD) % 8 == 0)  return "Havard";
 		return "Random";
 	}
 	public int getNextCleanWeek(String name){
